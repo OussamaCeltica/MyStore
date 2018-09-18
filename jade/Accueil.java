@@ -24,6 +24,8 @@ import javafx.stage.StageStyle;
  *
  * @author Client
  */
+
+//new changes ..
 public class Accueil extends Application {
     
     public Accueil() throws IOException{
