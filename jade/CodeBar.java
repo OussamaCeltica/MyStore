@@ -1,0 +1,422 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package jade;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.connectcode.Code128Auto;
+
+/**
+ *
+ * @author Client
+ */
+public class CodeBar extends javax.swing.JFrame {
+
+    /**
+     * Creates new form CodeBar
+     */
+    public CodeBar() throws SQLException {
+        initComponents();
+        
+        setVisible(true);
+        
+        new Drag().Draggable(this);
+        ResultSet r=Jade.BD.read("select * from mycodebar");
+        Div_Affich.remove(0);
+        
+        while(r.next()){
+           afficherBarcodes(r);
+        }
+        
+    }
+    
+    
+    
+    public String encode(String code){
+        Code128Auto generatecode=new Code128Auto();
+        String br=generatecode.encode(code);
+        return br;
+    }
+    
+    //la methode qui va afficher les code bares ..
+    public void afficherBarcodes(ResultSet r) throws SQLException{
+         DivBarcode = new javax.swing.JPanel();
+        DivCode = new javax.swing.JPanel();
+        DivCode_barcode = new javax.swing.JLabel();
+        DicCode_code = new javax.swing.JLabel();
+        date_ajt = new javax.swing.JLabel();
+        nom_Pr = new javax.swing.JLabel();
+        LabelNomPr = new javax.swing.JLabel();
+        LabelDateAjout = new javax.swing.JLabel();
+        imprimer = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        
+        DivBarcode.setBackground(new java.awt.Color(0, 0, 0));
+        DivBarcode.setMaximumSize(new java.awt.Dimension(1000, 150));
+        DivBarcode.setPreferredSize(new java.awt.Dimension(408, 358));
+        DivBarcode.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        DivCode.setBackground(new java.awt.Color(255, 255, 255));
+        DivCode.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        DivCode_barcode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DivCode_barcode.setFont(new java.awt.Font("CCode128_s3_Trial", java.awt.Font.PLAIN,24));
+        DivCode_barcode.setText(encode(r.getString("code")));
+        DivCode.add(DivCode_barcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 190, 70));
+
+        DicCode_code.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DicCode_code.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DicCode_code.setText(r.getString("code"));
+        DivCode.add(DicCode_code, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 190, 20));
+
+        DivBarcode.add(DivCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 210, 110));
+
+        date_ajt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        date_ajt.setForeground(new java.awt.Color(255, 255, 255));
+        date_ajt.setText(r.getString("date_add"));
+        DivBarcode.add(date_ajt, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 100, 20));
+
+        nom_Pr.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nom_Pr.setForeground(new java.awt.Color(255, 255, 255));
+        nom_Pr.setText(r.getString("titre"));
+        DivBarcode.add(nom_Pr, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 100, 20));
+
+        LabelNomPr.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        LabelNomPr.setForeground(new java.awt.Color(255, 255, 255));
+        LabelNomPr.setText("Nom de Produit:");
+        DivBarcode.add(LabelNomPr, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 110, 20));
+
+        LabelDateAjout.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        LabelDateAjout.setForeground(new java.awt.Color(255, 255, 255));
+        LabelDateAjout.setText("Date D'ajout:");
+        DivBarcode.add(LabelDateAjout, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 100, 20));
+        
+          imprimer.setBackground(new java.awt.Color(204, 0, 0));
+        imprimer.setForeground(new java.awt.Color(255, 255, 255));
+        imprimer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imprimer.setText("Imprimer");
+        imprimer.setOpaque(true);
+        DivBarcode.add(imprimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 114, 70, 20));
+
+        Div_Affich.add(DivBarcode);
+
+        jSeparator1.setMaximumSize(new java.awt.Dimension(1200, 5));
+        Div_Affich.add(jSeparator1);
+        
+        repaint();
+        revalidate();
+        
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        BarTitle = new javax.swing.JPanel();
+        exitButt = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        barcode = new javax.swing.JLabel();
+        code = new javax.swing.JLabel();
+        titre = new javax.swing.JTextField();
+        addCode = new javax.swing.JLabel();
+        generate = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Div_Affich = new javax.swing.JPanel();
+        DivBarcode = new javax.swing.JPanel();
+        DivCode = new javax.swing.JPanel();
+        DivCode_barcode = new javax.swing.JLabel();
+        DicCode_code = new javax.swing.JLabel();
+        date_ajt = new javax.swing.JLabel();
+        nom_Pr = new javax.swing.JLabel();
+        LabelNomPr = new javax.swing.JLabel();
+        LabelDateAjout = new javax.swing.JLabel();
+        imprimer = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        BarTitle.setBackground(new java.awt.Color(255, 255, 255));
+
+        exitButt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        exitButt.setForeground(new java.awt.Color(204, 0, 0));
+        exitButt.setText("x");
+        exitButt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitButtMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout BarTitleLayout = new javax.swing.GroupLayout(BarTitle);
+        BarTitle.setLayout(BarTitleLayout);
+        BarTitleLayout.setHorizontalGroup(
+            BarTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BarTitleLayout.createSequentialGroup()
+                .addContainerGap(813, Short.MAX_VALUE)
+                .addComponent(exitButt)
+                .addGap(18, 18, 18))
+        );
+        BarTitleLayout.setVerticalGroup(
+            BarTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(exitButt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(BarTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, -1));
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        barcode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel3.add(barcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 240, 70));
+
+        code.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        code.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel3.add(code, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 210, 30));
+
+        titre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        titre.setText("Donner le nom de produit");
+        titre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                titreActionPerformed(evt);
+            }
+        });
+        jPanel3.add(titre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, -1));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 260, 170));
+
+        addCode.setBackground(new java.awt.Color(204, 0, 51));
+        addCode.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        addCode.setForeground(new java.awt.Color(255, 255, 255));
+        addCode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        addCode.setText("Ajouter");
+        addCode.setOpaque(true);
+        addCode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addCodeMouseClicked(evt);
+            }
+        });
+        jPanel2.add(addCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 100, 30));
+
+        generate.setBackground(new java.awt.Color(255, 255, 255));
+        generate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        generate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        generate.setText("Générer");
+        generate.setOpaque(true);
+        generate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                generateMouseClicked(evt);
+            }
+        });
+        jPanel2.add(generate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 100, 30));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 280, 440));
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        Div_Affich.setLayout(new javax.swing.BoxLayout(Div_Affich, javax.swing.BoxLayout.Y_AXIS));
+
+        DivBarcode.setBackground(new java.awt.Color(0, 0, 0));
+        DivBarcode.setMaximumSize(new java.awt.Dimension(1000, 150));
+        DivBarcode.setPreferredSize(new java.awt.Dimension(408, 358));
+        DivBarcode.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        DivCode.setBackground(new java.awt.Color(255, 255, 255));
+        DivCode.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        DivCode_barcode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DivCode_barcode.setText("jLabel1");
+        DivCode.add(DivCode_barcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 190, 70));
+
+        DicCode_code.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DicCode_code.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DicCode_code.setText("jLabel2");
+        DivCode.add(DicCode_code, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 190, 20));
+
+        DivBarcode.add(DivCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 210, 110));
+
+        date_ajt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        date_ajt.setForeground(new java.awt.Color(255, 255, 255));
+        date_ajt.setText("2018-05-20");
+        DivBarcode.add(date_ajt, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 190, 20));
+
+        nom_Pr.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nom_Pr.setForeground(new java.awt.Color(255, 255, 255));
+        nom_Pr.setText("Nike Chaussure");
+        DivBarcode.add(nom_Pr, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 180, 20));
+
+        LabelNomPr.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        LabelNomPr.setForeground(new java.awt.Color(255, 255, 255));
+        LabelNomPr.setText("Nom de Produit:");
+        DivBarcode.add(LabelNomPr, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 110, 20));
+
+        LabelDateAjout.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        LabelDateAjout.setForeground(new java.awt.Color(255, 255, 255));
+        LabelDateAjout.setText("Date D'ajout:");
+        DivBarcode.add(LabelDateAjout, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 100, 20));
+
+        imprimer.setBackground(new java.awt.Color(204, 0, 0));
+        imprimer.setForeground(new java.awt.Color(255, 255, 255));
+        imprimer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imprimer.setText("Imprimer");
+        imprimer.setOpaque(true);
+        DivBarcode.add(imprimer, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 114, 70, 20));
+
+        Div_Affich.add(DivBarcode);
+
+        jSeparator1.setMaximumSize(new java.awt.Dimension(1200, 5));
+        Div_Affich.add(jSeparator1);
+
+        jScrollPane1.setViewportView(Div_Affich);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 550, 360));
+
+        jPanel4.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Les Codes Bar des Produits");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 550, 70));
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void generateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generateMouseClicked
+       
+        try {
+            //n oublier pa de tester si ce nombre existe deja ou n ..
+            boolean existeNew=false;
+             int d;
+            while(!existeNew){
+                Random ran = new Random();
+               d= ran.nextInt(999999999);
+            
+                ResultSet r=Jade.BD.read("select * from mycodebar where code='"+d+"'");
+            
+                  if(!r.next()){
+                      existeNew=true;
+                       Code128Auto generatecode=new Code128Auto();
+                       String br=generatecode.encode(""+d);
+                       code.setText(""+d);
+                       barcode.setFont(new java.awt.Font("CCode128_s3_Trial", java.awt.Font.PLAIN,24));
+                       barcode.setText(br);
+                
+                    }
+            }
+            
+            
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(CodeBar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_generateMouseClicked
+
+    private void exitButtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtMouseClicked
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_exitButtMouseClicked
+
+    private void titreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_titreActionPerformed
+
+    private void addCodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addCodeMouseClicked
+        // TODO add your handling code here:
+        if(barcode.getText().equals("")){
+           
+        }else {
+            if(titre.getText().equals("Donner le nom de produit")){
+                 
+            }else {
+                try {
+                    //insere le code bar au DB ..
+                    Calendar calendar = Calendar.getInstance();
+                    Date date = calendar.getInstance().getTime();
+
+                  // Display a date in day, month, year format
+                  DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                   String today = formatter.format(date);
+                   
+                    Jade.BD.write("insert into mycodebar (code , titre, date_add) values('"+code.getText()+"','"+titre.getText()+"','"+today+"')");
+                      
+                   } catch (SQLException ex) {
+                           Logger.getLogger(CodeBar.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+            }
+        }
+    }//GEN-LAST:event_addCodeMouseClicked
+
+    /**
+     * @param args the command line arguments
+     */
+     
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BarTitle;
+    private javax.swing.JLabel DicCode_code;
+    private javax.swing.JPanel DivBarcode;
+    private javax.swing.JPanel DivCode;
+    private javax.swing.JLabel DivCode_barcode;
+    private javax.swing.JPanel Div_Affich;
+    private javax.swing.JLabel LabelDateAjout;
+    private javax.swing.JLabel LabelNomPr;
+    private javax.swing.JLabel addCode;
+    private javax.swing.JLabel barcode;
+    private javax.swing.JLabel code;
+    private javax.swing.JLabel date_ajt;
+    private javax.swing.JLabel exitButt;
+    private javax.swing.JLabel generate;
+    private javax.swing.JLabel imprimer;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel nom_Pr;
+    private javax.swing.JTextField titre;
+    // End of variables declaration//GEN-END:variables
+}

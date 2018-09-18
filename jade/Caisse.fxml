@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="577.0" prefWidth="1069.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jade.CaisseController">
+   <children>
+      <Pane id="barTitle" fx:id="BarTitle" prefHeight="22.0" prefWidth="1115.0" style="-fx-background-color: #f9f9f9;">
+         <children>
+            <ImageView fitHeight="18.0" fitWidth="17.0" layoutX="1071.0" layoutY="2.0" onMouseClicked="#exit">
+               <image>
+                  <Image url="@../images/exit.png" />
+               </image>
+            </ImageView>
+            <ImageView id="minus" fitHeight="22.0" fitWidth="20.0" layoutX="1047.0">
+               <image>
+                  <Image url="@../images/minus.png" />
+               </image>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane layoutY="29.0" prefHeight="84.0" prefWidth="1115.0" style="-fx-background-color: black;">
+         <children>
+            <Label id="total" fx:id="total" layoutX="504.0" layoutY="23.0" prefHeight="39.0" prefWidth="480.0" text="Bénéfice Total: 1500DA" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="57.0" fitWidth="95.0" layoutX="372.0" layoutY="14.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/money_caisse.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutY="121.0" prefHeight="57.0" prefWidth="1115.0" style="-fx-background-color: black;">
+         <children>
+            <TextField fx:id="searchNomInp" focusTraversable="false" layoutX="475.0" layoutY="16.0" onKeyReleased="#ChercherParNom" prefHeight="25.0" prefWidth="185.0" promptText="Nom de produit" style="-fx-background-radius: 30px;" />
+            <Label layoutX="377.0" layoutY="18.0" text="Nom Produit:" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="searchJournéInp" focusTraversable="false" layoutX="744.0" layoutY="16.0" onKeyReleased="#ChercherParJourné" prefHeight="25.0" prefWidth="185.0" promptText="Format: 2018-03-15" style="-fx-background-radius: 30px;" />
+            <Label layoutX="698.0" layoutY="18.0" text="Date:" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="typePr" layoutX="128.0" layoutY="16.0" onAction="#ChercherParType" prefHeight="25.0" prefWidth="200.0" style="-fx-background-radius: 30px;" />
+            <Label layoutX="53.0" layoutY="18.0" text="Type:" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ScrollPane hbarPolicy="NEVER" layoutY="247.0" prefHeight="330.0" prefWidth="1115.0">
+         <content>
+            <VBox id="divAffich" fx:id="divAffich" prefHeight="45.0" prefWidth="1116.0">
+               <children>
+                  <Pane fx:id="divPr" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="1115.0" style="-fx-background-color: black;">
+                     <children>
+                        <Label fx:id="nom" layoutX="151.0" layoutY="10.0" prefHeight="26.0" prefWidth="132.0" style="-fx-font-family: Cairo;" text="Stone" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="code" layoutX="14.0" layoutY="10.0" prefHeight="26.0" prefWidth="124.0" style="-fx-font-family: Cairo-Regular;" text="25698" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="pVente" layoutX="443.0" layoutY="8.0" prefHeight="26.0" prefWidth="125.0" style="-fx-font-family: Cairo-Regular;" text="3500 DA" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="quantity" layoutX="589.0" layoutY="8.0" prefHeight="26.0" prefWidth="123.0" style="-fx-font-family: Cairo-Regular;" text="1520" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="benifice" layoutX="731.0" layoutY="10.0" prefHeight="26.0" prefWidth="116.0" style="-fx-font-family: Cairo-Regular;" text="524600 DA" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="type" layoutX="298.0" layoutY="10.0" prefHeight="26.0" prefWidth="118.0" style="-fx-font-family: Cairo-Regular;" text="Pulls" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="date" layoutX="871.0" layoutY="8.0" prefHeight="26.0" prefWidth="132.0" style="-fx-font-family: Cairo-Regular;" text="10-10-2010 10:10:10" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="suppButt" alignment="CENTER" layoutX="1030.0" layoutY="5.0" prefHeight="18.0" prefWidth="64.0" style="-fx-background-color: red; -fx-background-radius: 25px;" text="Supprimer" textFill="WHITE">
+                           <font>
+                              <Font size="9.0" />
+                           </font></Label>
+                        <Label fx:id="voirButt" alignment="CENTER" layoutX="1030.0" layoutY="26.0" prefHeight="17.0" prefWidth="67.0" style="-fx-background-color: white; -fx-background-radius: 25px;" text="Voir le produit">
+                           <font>
+                              <Font size="9.0" />
+                           </font></Label>
+                        <Separator fx:id="s1" layoutX="142.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="6.0" />
+                        <Separator fx:id="s2" layoutX="289.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="6.0" />
+                        <Separator fx:id="s3" layoutX="435.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="6.0" />
+                        <Separator fx:id="s4" layoutX="579.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="6.0" />
+                        <Separator fx:id="s5" layoutX="723.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="6.0" />
+                        <Separator fx:id="s6" layoutX="867.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="6.0" />
+                        <Separator fx:id="s7" layoutX="1011.0" orientation="VERTICAL" prefHeight="50.0" prefWidth="6.0" />
+                        <Separator fx:id="s8" layoutX="-3.0" layoutY="51.0" prefHeight="1.0" prefWidth="1115.0" />
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <Pane fx:id="headerTableau" layoutY="203.0" prefHeight="40.0" prefWidth="1115.0" style="-fx-background-color: #9a2626;">
+         <children>
+            <Label layoutX="4.0" layoutY="5.0" prefHeight="30.0" prefWidth="140.0" style="-fx-font-family: Cairo;" text="Code Bar" textFill="WHITE" />
+            <Separator layoutX="143.0" orientation="VERTICAL" prefHeight="40.0" prefWidth="0.0" />
+            <Label layoutX="151.0" layoutY="5.0" prefHeight="30.0" prefWidth="140.0" style="-fx-font-family: Cairo;" text="Nom de Produit" textFill="WHITE" />
+            <Separator layoutX="290.0" orientation="VERTICAL" prefHeight="40.0" prefWidth="0.0" />
+            <Label layoutX="295.0" layoutY="5.0" prefHeight="30.0" prefWidth="140.0" style="-fx-font-family: Cairo;" text="  Type" textFill="WHITE" />
+            <Separator layoutX="436.0" orientation="VERTICAL" prefHeight="40.0" prefWidth="0.0" />
+            <Label layoutX="439.0" layoutY="5.0" prefHeight="30.0" prefWidth="140.0" style="-fx-font-family: Cairo;" text="  Prix De Vente" textFill="WHITE" />
+            <Separator layoutX="580.0" orientation="VERTICAL" prefHeight="40.0" prefWidth="0.0" />
+            <Label layoutX="591.0" layoutY="5.0" prefHeight="30.0" prefWidth="132.0" style="-fx-font-family: Cairo;" text="Quantité vendu" textFill="WHITE" />
+            <Separator layoutX="724.0" orientation="VERTICAL" prefHeight="40.0" prefWidth="0.0" />
+            <Label layoutX="727.0" layoutY="5.0" prefHeight="30.0" prefWidth="140.0" style="-fx-font-family: Cairo;" text="  Bénéfice" textFill="WHITE" />
+            <Separator layoutX="868.0" orientation="VERTICAL" prefHeight="40.0" prefWidth="0.0" />
+            <Label layoutX="871.0" layoutY="5.0" prefHeight="30.0" prefWidth="140.0" style="-fx-font-family: Cairo;" text="   Date de Vente" textFill="WHITE" />
+            <Separator layoutX="1012.0" orientation="VERTICAL" prefHeight="40.0" prefWidth="0.0" />
+            <Label alignment="CENTER" layoutX="1049.0" layoutY="-5.0" prefHeight="40.0" prefWidth="37.0" text="-" textFill="WHITE">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,9 @@
+
+#connectButt {
+     -fx-background-color: white;
+     
+}
+#connectButt:hover {
+    -fx-background-color: #a80c0c;
+    -fx-text-fill: white;
+}

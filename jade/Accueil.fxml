@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="593.0" prefWidth="864.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jade.AccueilController">
+    
+   <children>
+      <ImageView fitHeight="593.0" fitWidth="864.0" layoutY="-1.0">
+         <image>
+            <Image url="@../images/accueil_bg.jpg" />
+         </image>
+         <effect>
+            <GaussianBlur radius="12.25" />
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="66.0" fitWidth="96.0" layoutX="233.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/configuration.png" />
+         </image>
+      </ImageView>
+      <Pane id="barTitle" fx:id="BarTitle" prefHeight="22.0" prefWidth="864.0" style="-fx-background-color: #f9f9f9;">
+         <children>
+            <ImageView fitHeight="18.0" fitWidth="17.0" layoutX="827.0" layoutY="2.0" onMouseClicked="#exit">
+               <image>
+                  <Image url="@../images/exit.png" />
+               </image>
+            </ImageView>
+            <ImageView id="minus" fitHeight="22.0" fitWidth="20.0" layoutX="804.0">
+               <image>
+                  <Image url="@../images/minus.png" />
+               </image>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Pane>
+      <Pane fx:id="addProd" layoutX="147.0" layoutY="151.0" onMouseClicked="#addProduct" prefHeight="187.0" prefWidth="171.0" styleClass="config">
+         <children>
+            <ImageView fitHeight="88.0" fitWidth="88.0" layoutX="43.0" layoutY="28.0">
+               <image>
+                  <Image url="@../images/add.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="22.0" layoutY="136.0" prefHeight="14.0" prefWidth="131.0" text="Ajouter Produits" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Pane>
+      <Pane fx:id="voirProd" layoutX="348.0" layoutY="151.0" onMouseClicked="#AfficherProduct" prefHeight="187.0" prefWidth="171.0" styleClass="config">
+         <children>
+            <ImageView fitHeight="101.0" fitWidth="112.0" layoutX="29.0" layoutY="28.0">
+               <image>
+                  <Image url="@../images/product.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="20.0" layoutY="136.0" prefHeight="14.0" prefWidth="131.0" text="Voir Les Produits" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Pane>
+      <Pane fx:id="vendProd" layoutX="542.0" layoutY="151.0" onMouseClicked="#vendProduct" prefHeight="187.0" prefWidth="171.0" styleClass="config">
+         <children>
+            <ImageView fitHeight="88.0" fitWidth="88.0" layoutX="42.0" layoutY="28.0">
+               <image>
+                  <Image url="@../images/vente.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="22.0" layoutY="135.0" prefHeight="14.0" prefWidth="131.0" text="Vendre Produit" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Pane>
+      <Pane fx:id="caisse" layoutX="147.0" layoutY="361.0" onMouseClicked="#voirCaisse" prefHeight="187.0" prefWidth="171.0" styleClass="config">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="96.0" layoutX="38.0" layoutY="28.0">
+               <image>
+                  <Image url="@../images/caisse.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="20.0" layoutY="136.0" prefHeight="14.0" prefWidth="131.0" text="Les Ventes" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Pane>
+      <Pane fx:id="type" layoutX="348.0" layoutY="361.0" onMouseClicked="#configType" prefHeight="187.0" prefWidth="171.0" styleClass="config">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="96.0" layoutX="38.0" layoutY="28.0">
+               <image>
+                  <Image url="@../images/type.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="20.0" layoutY="136.0" prefHeight="14.0" prefWidth="131.0" text="Les Types" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Pane>
+      <Pane fx:id="barCode" layoutX="542.0" layoutY="361.0" onMouseClicked="#generateBarcode" prefHeight="187.0" prefWidth="171.0" styleClass="config">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="96.0" layoutX="38.0" layoutY="28.0">
+               <image>
+                  <Image url="@../images/barcode.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="20.0" layoutY="136.0" prefHeight="14.0" prefWidth="131.0" text="Code Bar" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Pane>
+      <Label layoutX="339.0" layoutY="60.0" prefHeight="64.0" prefWidth="380.0" text="Configurations" textFill="WHITE">
+         <font>
+            <Font size="43.0" />
+         </font>
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <Label layoutX="708.0" layoutY="557.0" prefHeight="17.0" prefWidth="131.0" text="Benguergoura Oussama" textFill="WHITE">
+         <effect>
+            <DropShadow color="WHITE" />
+         </effect>
+      </Label>
+      <ImageView fitHeight="21.0" fitWidth="38.0" layoutX="677.0" layoutY="555.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/copyright.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
